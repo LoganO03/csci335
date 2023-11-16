@@ -14,7 +14,7 @@ public class MazeTest {
 		for (int i = 0; i < NUM_TESTS; ++i) {
 			Maze m = new Maze(WIDTH, HEIGHT);
 			m.makeMaze(new Pos(0, 0), new Pos(WIDTH - 1, HEIGHT - 1), 0, 1);
-			MazeSearcher searcher = new MazeSearcher(new maze.heuristics.BreadthFirst());
+			MazeTestSearcher searcher = new MazeTestSearcher();
 			searcher.solve(new MazeExplorer(m, m.getStart()));
 			assertTrue(searcher.success());
 			MazePath path = new MazePath(searcher.getResult().get(), m);
@@ -27,7 +27,7 @@ public class MazeTest {
 		for (int i = 0; i < NUM_TESTS; ++i) {
 			Maze m = new Maze(WIDTH, HEIGHT);
 			m.makeMaze(new Pos(0, 0), new Pos(WIDTH - 1, HEIGHT - 1), 2, 1);
-			MazeSearcher searcher = new MazeSearcher(new maze.heuristics.BreadthFirst());
+			MazeTestSearcher searcher = new MazeTestSearcher();
 			MazeExplorer endNode = new MazeExplorer(m, m.getEnd());
 			endNode.addTreasures(m.getTreasures());
 			searcher.solve(new MazeExplorer(m, m.getStart()));
